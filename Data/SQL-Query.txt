@@ -1,0 +1,104 @@
+-- Query database to check successful upload
+SELECT * FROM review_id_table;
+SELECT * FROM products;
+SELECT * FROM customers ;
+SELECT * FROM vine_table;
+
+--Check Count (answer 1392128)
+SELECT COUNT(review_id)
+FROM vine_table;
+
+--Check Count
+-- (answer -> 1392128)
+SELECT COUNT(review_id)
+FROM review_id_table;
+
+---------Analysis-----------------------
+
+--Check latest review date
+SELECT review_date
+FROM review_id_table
+ORDER BY review_date DESC;
+-- (answer-> 2015-08-31)
+
+-- Check oldest review date
+SELECT review_date
+FROM review_id_table
+ORDER BY review_date ASC;
+-- (answer-> 1999-08-13)
+
+--Count AVG Number of helpful votes.
+-- (answer -> !V=1, V=3)
+SELECT (vine),
+ROUND(AVG(helpful_votes))
+FROM vine_table
+GROUP BY (vine);
+
+--Count Number of helpful votes.
+-- (answer -> !V=1, V=3)
+SELECT (vine),
+COUNT (helpful_votes)
+FROM vine_table
+GROUP BY (vine);
+
+
+--Count Number of UN-Paid(!V) Vs Paid(V)reviews.
+-- (answer -> !V=1392109, V=19)
+SELECT (vine),
+COUNT (vine)
+FROM vine_table
+GROUP BY (vine);
+
+----------Paid Vs UN-Paid Reviews Star Count------------------
+--Count Number of 5 star reviews.
+-- (answer -> !V=876023, V=8)
+SELECT (vine),
+COUNT (vine)
+FROM vine_table
+WHERE (star_rating)=5
+GROUP BY (vine);
+
+--Count Number of 4 star reviews.
+-- (answer -> !V=229169, V=7)
+SELECT(vine),
+COUNT (vine)
+FROM vine_table
+WHERE(star_rating)=4
+GROUP BY (vine);
+
+--Count Number of 3 star reviews.
+-- (answer -> !V=119981, V=3)
+SELECT(vine), 
+COUNT (vine)
+FROM vine_table
+WHERE (star_rating)=3
+GROUP BY (vine);
+
+--Count Number of 2 star reviews.
+-- (answer ->!V= 73585, V=1)
+SELECT(vine),
+COUNT (vine)
+FROM vine_table
+WHERE star_rating =2
+GROUP BY (vine);
+
+--Count Number of 1 star or less reviews.
+-- (answer -> !V=93351, V=0)
+SELECT (vine),
+COUNT (vine)
+FROM vine_table
+WHERE star_rating <=1
+GROUP BY (vine);
+
+-- avg star rating, V vs !V
+-- (answer -> N=4 and Y=)
+SELECT (vine),
+    ROUND(AVG(star_rating))
+FROM vine_table
+GROUP BY (vine);
+
+SELECT vine,
+    COUNT(review_id)
+FROM vine_table
+WHERE star_rating = 5
+GROUP BY vine;
