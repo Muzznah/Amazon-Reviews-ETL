@@ -29,6 +29,6 @@ The above three tables highlight that:
 ### Data
 - https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt
 - https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Baby_v1_00.tsv.gz
-- 
+
 ### Software
 - Amazon RDS, Google Colaboratory, spark 3.0.0, Python 3.7.7, PostgreSQL 11.8, pgAdmin4.14
